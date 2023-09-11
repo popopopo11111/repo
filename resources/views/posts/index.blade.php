@@ -7,6 +7,12 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
+        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            {{ __('Dashboard') }}
+        </x-nav-link>
+        <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+            {{ __('Index') }}
+        </x-nav-link>
         <h1>Blog Name</h1>
         <a href='/posts/create'>create</a>
         <div class='posts'>
@@ -23,6 +29,7 @@
                 </div>
             @endforeach
         </div>
+        <div>{{ Auth::user()->name }}</div>
         <div class='paginate'>
             {{ $posts->links() }}
         </div>
